@@ -4,11 +4,11 @@ import {
   experience,
   languages,
   profile,
-  projects,
   skills,
-  stats,
 } from "@/data/portfolio";
 import { Hero } from "@/components/Hero";
+import { IdBadge } from "@/components/IdBadge";
+import { ProjectPanels } from "@/components/ProjectPanels";
 import { Nav } from "@/components/Nav";
 import { Reveal } from "@/components/Reveal";
 import { Section, Tag } from "@/components/Section";
@@ -29,13 +29,8 @@ export default function Home() {
                 <p key={p}>{p}</p>
               ))}
             </Reveal>
-            <Reveal delay={100} className="grid grid-cols-3 gap-3 self-start lg:grid-cols-1">
-              {stats.map((s) => (
-                <div key={s.label} className="rounded-xl border border-line bg-surface p-5">
-                  <div className="text-3xl font-semibold text-gradient sm:text-4xl">{s.value}</div>
-                  <div className="mt-1 text-sm text-muted">{s.label}</div>
-                </div>
-              ))}
+            <Reveal delay={100} className="-mt-6 self-start justify-self-center">
+              <IdBadge />
             </Reveal>
           </div>
         </Section>
@@ -78,60 +73,9 @@ export default function Home() {
 
         {/* Projects */}
         <Section id="projects" index="03" title="Projects">
-          <div className="grid gap-5 md:grid-cols-2">
-            {projects.map((p, i) => (
-              <Reveal key={p.title} delay={(i % 2) * 80} className={p.featured ? "md:col-span-2" : ""}>
-                <article
-                  className={`group flex h-full flex-col rounded-xl border bg-surface p-6 transition-all hover:-translate-y-1 hover:border-accent/40 ${
-                    p.featured ? "border-accent/25 bg-linear-to-br from-accent/[0.07] to-transparent sm:p-8" : "border-line"
-                  }`}
-                >
-                  <div className="flex items-start justify-between gap-4">
-                    <div>
-                      {p.featured && (
-                        <p className="mb-2 font-mono text-xs uppercase tracking-widest text-accent">Featured project</p>
-                      )}
-                      <h3 className={`font-semibold ${p.featured ? "text-2xl" : "text-lg"}`}>{p.title}</h3>
-                      <p className="mt-1 text-sm text-muted">
-                        {p.subtitle} · <span className="font-mono">{p.year}</span>
-                      </p>
-                    </div>
-                    <div className="flex shrink-0 items-center gap-1">
-                      {p.repo && (
-                        <a href={p.repo} target="_blank" rel="noopener noreferrer" aria-label={`${p.title} source code on GitHub`} className="rounded-md p-1.5 text-muted transition hover:text-accent">
-                          <GitHubIcon />
-                        </a>
-                      )}
-                      {p.demo && (
-                        <a href={p.demo} target="_blank" rel="noopener noreferrer" aria-label={`${p.title} live demo`} className="rounded-md p-1.5 text-muted transition hover:text-accent">
-                          <ArrowUpRightIcon className="h-5 w-5" />
-                        </a>
-                      )}
-                    </div>
-                  </div>
-
-                  <p className={`mt-4 leading-relaxed text-muted ${p.featured ? "max-w-3xl sm:text-[17px]" : "text-[15px]"}`}>
-                    {p.description}
-                  </p>
-
-                  <ul className={`mt-4 gap-2 text-sm text-muted ${p.featured ? "grid sm:grid-cols-3" : "space-y-1.5"}`}>
-                    {p.highlights.map((h) => (
-                      <li key={h} className="flex gap-2">
-                        <span className="text-accent" aria-hidden="true">▹</span>
-                        {h}
-                      </li>
-                    ))}
-                  </ul>
-
-                  <div className="mt-auto flex flex-wrap gap-2 pt-6">
-                    {p.tech.map((t) => (
-                      <Tag key={t}>{t}</Tag>
-                    ))}
-                  </div>
-                </article>
-              </Reveal>
-            ))}
-          </div>
+          <Reveal>
+            <ProjectPanels />
+          </Reveal>
           <Reveal className="mt-10 text-center">
             <a
               href={profile.github}

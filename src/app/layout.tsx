@@ -14,11 +14,11 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Yassine Hajkacem — Full-Stack Developer",
+  title: "Yassine Hajkacem — Full-Stack & AI Developer",
   description:
-    "Portfolio of Yassine Hajkacem, a full-stack developer building AI-powered web apps with React, FastAPI, LangChain, Django, Symfony and ASP.NET Core.",
+    "Portfolio of Yassine Hajkacem, a full-stack and AI developer building AI-powered web apps with React, FastAPI, LangChain, Django, Symfony and ASP.NET Core.",
   openGraph: {
-    title: "Yassine Hajkacem — Full-Stack Developer",
+    title: "Yassine Hajkacem — Full-Stack & AI Developer",
     description: "Full-stack & AI developer from Sfax, Tunisia. RAG, LangChain agents, React, FastAPI.",
     type: "website",
   },

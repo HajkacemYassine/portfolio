@@ -2,8 +2,8 @@
 
 export const profile = {
   name: "Yassine Hajkacem",
-  role: "Full-Stack Developer",
-  tagline: "AI & Web Applications",
+  role: "Full-Stack & AI Developer",
+  tagline: "RAG, Agents & Web Apps",
   location: "Sfax, Tunisia",
   intro:
     "I build full-stack web apps and AI-powered tools — from RAG pipelines and LangChain agents to clean React interfaces and solid REST APIs.",
@@ -16,7 +16,19 @@ export const profile = {
   github: "https://github.com/HajkacemYassine",
   linkedin: "https://www.linkedin.com/in/yassine-hajkacem-2a5128266/",
   cv: "/Yassine_Hajkacem_CV.pdf",
+  // Photo shown on the ID badge. Put the image in /public and set e.g. "/avatar.jpg".
+  // Leave empty to show the "YH" monogram instead.
+  photo: "/avatar.jpg",
 };
+
+// "What I am" checklist on the back of the ID badge.
+export const badgeFacts = [
+  { title: "Full-Stack Developer", detail: "React · Angular · FastAPI · Django" },
+  { title: "AI builder", detail: "RAG · LangChain agents · SAV-IA" },
+  { title: "Back-end & APIs", detail: "REST · PostgreSQL · Docker · n8n" },
+  { title: "IT undergrad", detail: "ISET Sfax · Info. Systems · 2027" },
+  { title: "3 internships", detail: "Platana · REF IT · ASM" },
+];
 
 export const stats = [
   { value: "3", label: "Internships" },
@@ -82,6 +94,8 @@ export type Project = {
   repo?: string;
   demo?: string;
   featured?: boolean;
+  // Which mini mock UI to draw in the project panel (see ProjectPreview.tsx).
+  preview?: "sav" | "expense" | "erp" | "blood" | "risk" | "shop";
 };
 
 export const projects: Project[] = [
@@ -99,6 +113,21 @@ export const projects: Project[] = [
     tech: ["FastAPI", "React", "TypeScript", "PostgreSQL", "Qdrant", "LangChain", "Llama 3.3 70B", "Docker"],
     repo: "https://github.com/HajkacemYassine/sav-ia",
     featured: true,
+    preview: "sav",
+  },
+  {
+    title: "ExpenseSnap",
+    subtitle: "AI receipt scanner automated with n8n",
+    year: "2026",
+    description:
+      "Snap a receipt and a vision AI model reads it: merchant, date, amount and category are extracted, reviewed in the app, then saved to Google Sheets. All the back-end logic runs in n8n workflows, with no custom server.",
+    highlights: [
+      "Receipt photo → structured JSON via a vision AI model",
+      "3 n8n webhooks: analyze, save, monthly history",
+      "Review form with validation, low-confidence warning and alerts above 100 TND",
+    ],
+    tech: ["n8n", "Vision AI", "Google Sheets", "REST API", "Flutter"],
+    preview: "expense",
   },
   {
     title: "ERP Stock Module",
@@ -109,6 +138,7 @@ export const projects: Project[] = [
     highlights: ["Symfony REST back-end", "Angular dashboards", "Relational SQL schema"],
     tech: ["Symfony", "Angular", "TypeScript", "SQL"],
     repo: "https://github.com/HajkacemYassine/Erp-Project",
+    preview: "erp",
   },
   {
     title: "BloodDonation",
@@ -118,6 +148,8 @@ export const projects: Project[] = [
       "A platform where hospitals post urgent blood requests and matching donors get notified in real time.",
     highlights: ["Django REST API", "Donor profiles & urgent requests", "Real-time notifications"],
     tech: ["Django", "Python", "React"],
+    repo: "https://github.com/HajkacemYassine/Projet-Django",
+    preview: "blood",
   },
   {
     title: "Construction Risk Prediction",
@@ -127,6 +159,7 @@ export const projects: Project[] = [
       "Predicting risk levels on construction sites from safety data, presented to a panel of experts.",
     highlights: ["Data cleaning & preprocessing", "Random Forest and XGBoost classifiers", "Results visualization"],
     tech: ["Python", "Random Forest", "XGBoost"],
+    preview: "risk",
   },
   {
     title: "E-Commerce Store",
@@ -136,16 +169,18 @@ export const projects: Project[] = [
       "An online store with catalog, cart, payments, order management and an admin monitoring dashboard.",
     highlights: ["MVC with Entity Framework", "Secure authentication", "Admin dashboard"],
     tech: ["ASP.NET Core", "Entity Framework", "SQL Server"],
+    preview: "shop",
   },
 ];
 
 export const skills: { group: string; items: string[] }[] = [
   { group: "Languages", items: ["Python", "TypeScript", "JavaScript", "PHP", "C", "SQL", "HTML/CSS"] },
   { group: "Front-End", items: ["React", "Angular", "HTML5", "CSS3"] },
+  { group: "Mobile", items: ["Flutter", "Dart"] },
   { group: "Back-End", items: ["FastAPI", "Django", "Symfony", "ASP.NET Core", "Entity Framework", "REST APIs"] },
   { group: "AI / ML", items: ["LangChain", "RAG", "LLMs (Groq, Llama)", "Embeddings", "Semantic search", "Random Forest", "XGBoost"] },
   { group: "Data", items: ["PostgreSQL", "MySQL", "SQL Server", "Qdrant", "Alembic"] },
-  { group: "Tools", items: ["Git", "GitHub", "Docker"] },
+  { group: "Tools", items: ["Git", "GitHub", "Docker", "n8n", "Postman"] },
 ];
 
 export const education = [

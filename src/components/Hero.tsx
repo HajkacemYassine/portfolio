@@ -78,7 +78,7 @@ function Terminal() {
       <pre className="overflow-x-auto p-5 font-mono text-[13px] leading-7 sm:text-sm">
         <code>
           <Line cmd="whoami" />
-          <Out>Full-stack developer · AI enthusiast</Out>
+          <Out>Full-stack & AI developer</Out>
           <Line cmd="cat stack.json" />
           <Out>
             {"{"}
@@ -90,7 +90,7 @@ function Terminal() {
           </Out>
           <Line cmd="ls projects/" />
           <Out>
-            <span className="text-accent-2">sav-ia/</span>  <span className="text-accent-2">erp-stock/</span>  <span className="text-accent-2">blood-donation/</span>
+            <span className="text-accent-2">sav-ia/</span>  <span className="text-accent-2">expensesnap/</span>  <span className="text-accent-2">blood-donation/</span>
           </Out>
           <span className="text-accent">❯</span> <span className="cursor" />
         </code>

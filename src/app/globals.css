@@ -79,6 +79,144 @@ body {
   }
 }
 
+/* Flip ID badge (<IdBadge>) */
+.badge-lanyard {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 56px;
+}
+.badge-strap {
+  width: 22px;
+  height: 44px;
+  border-radius: 0 0 4px 4px;
+  background: linear-gradient(180deg, transparent, var(--accent) 40%, var(--accent-2));
+  opacity: 0.85;
+}
+.badge-clip {
+  width: 30px;
+  height: 14px;
+  margin-top: -2px;
+  border-radius: 3px;
+  background: linear-gradient(180deg, #d7dbe4, #8b92a3);
+  box-shadow: 0 1px 2px rgb(0 0 0 / 0.4);
+}
+.badge-scene {
+  width: 300px;
+  max-width: 100%;
+  height: 440px;
+  perspective: 1400px;
+  cursor: pointer;
+  animation: badge-sway 6s ease-in-out infinite;
+  transform-origin: top center;
+}
+.badge-scene:hover,
+.badge-scene:focus-visible {
+  animation-play-state: paused;
+}
+.badge-card {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  transform-style: preserve-3d;
+  transition: transform 0.8s cubic-bezier(0.2, 0.7, 0.2, 1);
+}
+.badge-card[data-flipped="true"] {
+  transform: rotateY(180deg);
+}
+.badge-face {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  border: 1px solid var(--border);
+  border-radius: 1rem;
+  background:
+    radial-gradient(120% 60% at 50% 0%, rgb(52 211 153 / 0.08), transparent 60%),
+    var(--surface);
+  box-shadow:
+    0 30px 60px -20px rgb(0 0 0 / 0.6),
+    0 0 0 1px rgb(255 255 255 / 0.02) inset;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+}
+.badge-back {
+  transform: rotateY(180deg);
+}
+.badge-punch {
+  position: absolute;
+  top: 8px;
+  left: 50%;
+  z-index: 1;
+  width: 44px;
+  height: 7px;
+  margin-left: -22px;
+  border-radius: 999px;
+  background: var(--bg);
+  box-shadow: 0 1px 0 rgb(255 255 255 / 0.06);
+}
+.badge-monogram {
+  display: grid;
+  place-items: center;
+  width: 128px;
+  height: 128px;
+  border-radius: 999px;
+  background:
+    linear-gradient(var(--surface-2), var(--surface-2)) padding-box,
+    linear-gradient(135deg, var(--accent), var(--accent-2)) border-box;
+  border: 2px solid transparent;
+  box-shadow: 0 0 40px -8px rgb(52 211 153 / 0.35);
+}
+/* "What I am" rows slide in once the back face is showing */
+.badge-fact {
+  opacity: 0;
+  transform: translateX(-8px);
+  transition: opacity 0.4s ease, transform 0.4s ease;
+}
+.badge-card[data-flipped="true"] .badge-fact {
+  opacity: 1;
+  transform: none;
+}
+@keyframes badge-sway {
+  0%,
+  100% {
+    transform: rotate(-1.2deg);
+  }
+  50% {
+    transform: rotate(1.2deg);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .badge-scene {
+    animation: none;
+  }
+  .badge-fact {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+  /* Crossfade instead of a 3D spin */
+  .badge-card,
+  .badge-card[data-flipped="true"] {
+    transform: none;
+    transition: none;
+  }
+  .badge-face {
+    transition: opacity 0.2s ease;
+  }
+  .badge-back {
+    transform: none;
+    opacity: 0;
+  }
+  .badge-card[data-flipped="true"] .badge-back {
+    opacity: 1;
+  }
+  .badge-card[data-flipped="true"] .badge-face:not(.badge-back) {
+    opacity: 0;
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
   html {
     scroll-behavior: auto;
