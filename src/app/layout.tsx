@@ -14,6 +14,8 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
+  // Needed so the generated link-preview image gets a full https:// URL (LinkedIn requires it).
+  metadataBase: new URL("https://yassine-hajkacem.vercel.app"),
   title: "Yassine Hajkacem — Full-Stack & AI Developer",
   description:
     "Portfolio of Yassine Hajkacem, a full-stack and AI developer building AI-powered web apps with React, FastAPI, LangChain, Django, Symfony and ASP.NET Core.",
