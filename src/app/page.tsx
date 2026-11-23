@@ -12,6 +12,8 @@ import { ProjectPanels } from "@/components/ProjectPanels";
 import { Nav } from "@/components/Nav";
 import { Reveal } from "@/components/Reveal";
 import { Section, Tag } from "@/components/Section";
+import { SkillsMarquee } from "@/components/SkillsMarquee";
+import { skillLogoRows } from "@/data/skill-logos";
 import { ArrowUpRightIcon, GitHubIcon, LinkedInIcon, MailIcon } from "@/components/Icons";
 
 export default function Home() {
@@ -90,6 +92,9 @@ export default function Home() {
 
         {/* Skills */}
         <Section id="skills" index="04" title="Skills">
+          <Reveal className="mb-12">
+            <SkillsMarquee rows={skillLogoRows} />
+          </Reveal>
           <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
             {skills.map((s, i) => (
               <Reveal key={s.group} delay={(i % 3) * 60} className="rounded-xl border border-line bg-surface p-6">
